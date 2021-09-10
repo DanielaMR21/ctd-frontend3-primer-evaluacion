@@ -24,41 +24,46 @@ class Contenedor extends Component {
             historialSeleccionados.push(this.state.letraSeleccionada);
         }
       }
+
+    cambioDeEstado(numero,letra){
+      this.setState({
+             idSeleccionado: this.state.idSeleccionado + numero,
+            letraSeleccionada: letra,
+         })
+    }
     
       handleClick(e){
         console.log(e.target);
         const id = e.target.id;
 
+          
         if (this.state.idSeleccionado > 6) {
             Swal.fire({
                 title:"Finalizo la historia",
         confirmButtonText:"Aceptar"})
-        } else if (id === "A" && this.state.letraSeleccionada !== "A") {
-          this.setState({
-            idSeleccionado: this.state.idSeleccionado + 1,
-            letraSeleccionada: "A",
-          });
-        } else if (id === "A" && this.state.letraSeleccionada === "A") {
-          this.setState({
-            idSeleccionado: this.state.idSeleccionado + 2,
-          });
-        } else if (id === "B" && this.state.letraSeleccionada === "A") {
-          this.setState({
-            idSeleccionado: this.state.idSeleccionado + 3,
-            letraSeleccionada: "B",
-          });
-        } else if (id === "B") {
-          this.setState({
-            idSeleccionado: this.state.idSeleccionado + 2,
-            letraSeleccionada: "B",
-          });
+        }else{
+          switch(id){
+            case "A":
+              this.state.letraSeleccionada !== "A" ? this.cambioDeEstado(1,"A") :this.cambioDeEstado(2,"A")
+              console.log(this.state.idSeleccionado);
+            break
+            case "B":
+              this.state.letraSeleccionada === "A" ? this.cambioDeEstado(3,"B") :this.cambioDeEstado(2,"B")
+              console.log(this.state.idSeleccionado);
+            break
+            default:
+              console.log("Fin");
+            break
+          }
         }
       };
     
     render(){
         return (
             <div className="layout">
-        <Texto texto={this.state.data[this.state.idSeleccionado].historia}/>
+
+         <Texto 
+         texto={this.state.data[this.state.idSeleccionado].historia}/>
         <Botones
           handleClick={this.handleClick}
           opUno={this.state.data[this.state.idSeleccionado].opciones.a}
