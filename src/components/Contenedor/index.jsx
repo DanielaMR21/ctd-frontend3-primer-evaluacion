@@ -6,7 +6,7 @@ import Botones from '../Botones'
 import Historial from '../Historial'
 import './index.css';
 
-let historialSeleccionados= [];
+const historialSeleccionados= []
 
 class Contenedor extends Component {
     constructor(props){
@@ -19,9 +19,9 @@ class Contenedor extends Component {
         this.handleClick = this.handleClick.bind(this)
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevState) {
         if (prevState.idSeleccionado !== this.state.idSeleccionado) {
-            historialSeleccionados.push(this.state.letraSeleccionada);
+           historialSeleccionados.push(this.state.letraSeleccionada);
         }
       }
 
