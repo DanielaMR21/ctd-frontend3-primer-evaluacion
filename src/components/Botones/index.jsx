@@ -1,23 +1,21 @@
-import { Component, Fragment } from "react";
+import { Component } from "react";
+import './index.css'
 
 
 export default class Botones extends Component {
-     
-  handleClick =()=>{
-    console.log("Se oprimio");
-  }
     render() {
+        const {opUno, opDos } = this.props;
         return (
-                <Fragment>
+            <div className="opciones">
                     <div className="opcion">
-                        <button id={"A"} onClick={this.handleClick}>{"Adsfsdfsdf"}</button>
-                        <h2>{"A"}</h2>
+                        <button id="A" className="botones" onClick={this.props.handleClick}>A</button>
+                        <h2>{opUno}</h2>
                     </div>
-                    <div className="opcion">
-                        <button id={"B"} onClick={this.handleClick}>{"dsds"}</button>
-                        <h2>{"B"}</h2>
+                    <div  className="opcion">
+                        <button id="B" className="botones" onClick={this.props.handleClick}>B</button>
+                        <h2>{opDos}</h2>
                     </div>
-                </Fragment>
+            </div>
 
         )
     }

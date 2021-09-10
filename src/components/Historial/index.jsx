@@ -1,16 +1,18 @@
-import { Component, Fragment } from "react";
+import { Component } from "react";
+
 
 export default class Historial extends Component {
 
     render() {
+        const {letraSeleccionada, historialSeleccionados}=this.props;
         return (
-            <Fragment>
-                <h3>Selección anterior: </h3>
-                <h4>Historial de opciones elegidas: </h4>
+            <div className="recordatorio">
+                <h3>Selección anterior:{letraSeleccionada} </h3>
+                <h4>Historial de opciones elegidas:</h4>
                 <ul>
-                    <li></li>
+                    {historialSeleccionados}
                 </ul>
-            </Fragment>
+            </div>
 
         )
     }
